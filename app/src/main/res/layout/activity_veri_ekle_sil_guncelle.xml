@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/kadiTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Kullanıcı Adı Girin."
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09" />
+
+    <EditText
+        android:id="@+id/sifreTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Şifre Girin."
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/kadiTxt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/kadiTxt"
+        app:layout_constraintTop_toBottomOf="@+id/kadiTxt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/epostaTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="E-Posta Girin."
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sifreTxt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/sifreTxt"
+        app:layout_constraintTop_toBottomOf="@+id/sifreTxt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/telTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Telefon Numarası Girin"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/epostaTxt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/epostaTxt"
+        app:layout_constraintTop_toBottomOf="@+id/epostaTxt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnIslemYap"
+        android:layout_width="199dp"
+        android:layout_height="53dp"
+        android:onClick="btnClick"
+        android:text="İşlem Yap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telTxt"
+        app:layout_constraintVertical_bias="0.51" />
+
+    <RadioGroup
+        android:id="@+id/rdGroup"
+        android:layout_width="133dp"
+        android:layout_height="154dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnIslemYap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telTxt">
+
+        <RadioButton
+            android:id="@+id/rdbtnVeriEkle"
+            android:layout_width="132dp"
+            android:layout_height="wrap_content"
+            android:text="Veri Ekle" />
+
+        <RadioButton
+            android:id="@+id/rdbtnVeriSil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Veri Sil" />
+
+        <RadioButton
+            android:id="@+id/rdbtnVeriGuncelle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Veri Güncelle" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/veriAraTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Veri Ara"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnIslemYap"
+        app:layout_constraintVertical_bias="0.215" />
+
+    <Button
+        android:id="@+id/btnAra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ARA"
+        app:layout_constraintBottom_toBottomOf="@+id/veriAraTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/veriAraTxt"
+        app:layout_constraintTop_toTopOf="@+id/veriAraTxt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
