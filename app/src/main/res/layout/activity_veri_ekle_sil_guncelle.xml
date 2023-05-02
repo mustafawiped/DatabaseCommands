@@ -122,6 +122,7 @@
         android:id="@+id/btnAra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="btnVeriAra"
         android:text="ARA"
         app:layout_constraintBottom_toBottomOf="@+id/veriAraTxt"
         app:layout_constraintEnd_toEndOf="parent"

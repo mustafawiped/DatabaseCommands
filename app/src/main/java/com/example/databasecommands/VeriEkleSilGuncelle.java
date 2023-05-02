@@ -16,13 +16,14 @@ import android.widget.Toast;
 public class VeriEkleSilGuncelle extends AppCompatActivity {
     // D E V E L O P E D     M U S T A F A W I P E D \\
     SQLiteDatabase db;
-    EditText kadiText, sifreText, epostaText, telText;
+    EditText kadiText, sifreText, epostaText, telText, aramaText;
 
     private void init() {   // init "initalize" nin kısaltılmış halidir. Başlangıç tanımlamaları genellikle bu isimle yapılır.
         kadiText = findViewById(R.id.kadiTxt);
         sifreText = findViewById(R.id.sifreTxt);    // xml dosyaları ile gerekli bağlantılar sağlandı.
         epostaText = findViewById(R.id.epostaTxt);
         telText = findViewById(R.id.telTxt);
+        aramaText = findViewById(R.id.veriAraTxt);
     }
 
     @Override
@@ -125,5 +126,24 @@ public class VeriEkleSilGuncelle extends AppCompatActivity {
             }
         }
         else Toast.makeText(this, "Lütfen silmek istediğiniz metni girin.", Toast.LENGTH_SHORT).show(); // eğer kadi değişkeni dolu değilse yapılacaklar...
+    }
+
+    public void btnVeriAra(View view) {  // Bu methoddaki tüm işlemlerin ne anlama geldiği üst satırlarda yazmaktadır.
+        String[] girilenkadi = {aramaText.getText().toString()};
+        if (!aramaText.getText().toString().isEmpty()) {
+            Cursor cursor = db.rawQuery("SELECT * FROM veriler WHERE kadi = ?",girilenkadi);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    @SuppressLint("Range") String kadi = cursor.getString(cursor.getColumnIndex("kadi")),
+                                                  sifre = cursor.getString(cursor.getColumnIndex("sifre")),
+                                                  eposta = cursor.getString(cursor.getColumnIndex("eposta")),
+                                                  tel = cursor.getString(cursor.getColumnIndex("tel"));
+                    kadiText.setText(kadi);
+                    sifreText.setText(sifre);
+                    epostaText.setText(eposta);
+                    telText.setText(tel);
+                } while (cursor.moveToNext());
+            } else Toast.makeText(this, "Bu kullanıcı adına sahip veri bulunamadı.", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, "Lütfen kullanıcı adı girin", Toast.LENGTH_SHORT).show();
     }
 }
