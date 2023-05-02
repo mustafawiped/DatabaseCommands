@@ -110,6 +110,20 @@ public class VeriEkleSilGuncelle extends AppCompatActivity {
     }
 
     private void VeriSil() {
-        
+        String kadi = kadiText.getText().toString();   // silinecek veriyi ayrıştırmak için kullanıcı adını çekiyoruz.
+        String[] sorgu = {kadi};    // Cursor nesnesiyle verinin olup olmadığını kontrol ederkenki kullanılack sorgu için dizi oluşturuyoruz.
+        if (!kadi.isEmpty()) {    // burda kadi değişkeni boş mu dolu mu kontrol ediyoruz. Normalde kadi.isEmpty() düz boşsa true verir ama başına ! koyduğum için true ise false değeri verir yani tam tersi değer.
+            Cursor cs = db.rawQuery("SELECT kadi FROM veriler WHERE kadi = ?",sorgu);  // Cursor ile veritabanı sorgusu yapıp veri çektik
+            if (cs != null && cs.moveToFirst()) {   // ve eğer gelen veri null değilse ve en az 1 veri varsa aşağıdaki kodları çalıştır dedik.
+                cs.close();   // ilk başta cursor u kapattık çünkü artık işimize yaramayacak.
+                SQLiteStatement statement = db.compileStatement("DELETE FROM veriler WHERE kadi = ?");  // sqlstatement ile silme sorgusu çalıştırdık
+                statement.bindString(1,kadi);  // soru işareti olan yere veri ekledik bindString ile.
+                statement.execute();  // sorguyu veritabanında çalıştırdık.
+            } else {  // eğer cursor nesnesindeki değer null ise veya hiç bir değer gelmemişse..
+                cs.close();  // cursor u kapatıyoruz
+                Toast.makeText(this, "Girdiğiniz kullanıcı adında veri bulunamadı.", Toast.LENGTH_SHORT).show(); // ve uyarı veriyoruz.
+            }
+        }
+        else Toast.makeText(this, "Lütfen silmek istediğiniz metni girin.", Toast.LENGTH_SHORT).show(); // eğer kadi değişkeni dolu değilse yapılacaklar...
     }
 }
