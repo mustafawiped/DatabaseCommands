@@ -20,5 +20,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnVeriListele(View view) {
+        Intent i = new Intent(MainActivity.this,VeriListeleme.class);
     }
 }

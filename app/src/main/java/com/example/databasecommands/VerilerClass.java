@@ -3,6 +3,14 @@ package com.example.databasecommands;
 public class VerilerClass {
     public String kadi, sifre, eposta, tel;
 
+    /*
+
+    Kullanıcı adı, şifre, eposta ve telefon no gibi verileri diğer class lardan çekmek için
+    ve hangi verinin hangisi olduğunu ayrıştırmak için VerilerClass sınıfını oluşturduk
+    ve tüm verilere ilk baş Constractor oluşturduk daha sonra Getter ve Setter oluşturduk.
+
+     */
+
     public VerilerClass(String kadi, String sifre, String eposta, String tel) {
         this.kadi = kadi;
         this.sifre = sifre;
